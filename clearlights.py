@@ -45,8 +45,8 @@ def colorWipe(strip, color, wait_ms=50):
 
 def TwinkleTwinkle(strip):
     for i in range(strip.numPixels()):
-        color = (int(random.random()*255),int(random.random()*255),int(random.random()*255))
-        strip.setPixelColor(int(random.random()*LED_COUNT),color)
+        color_in = Color(int(random.random()*255),int(random.random()*255),int(random.random()*255))
+        strip.setPixelColor(int(random.random()*LED_COUNT),color_in)
         strip.show()
         time.sleep(500/1000.0)
 		
