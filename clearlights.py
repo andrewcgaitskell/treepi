@@ -54,7 +54,15 @@ def clearStrip():
 
 @app.route('/pattern/<name>')
 def success(name):
-   return 'display %s' % name
+    if name = 'red':
+	colorWipe(strip, Color(0, 0, 255))
+    elif name = 'green':
+	colorWipe(strip, Color(0, 255, 0))
+    elif name = 'green':
+	colorWipe(strip, Color(255, 0, 0))
+    else :
+	colorWipe(strip, Color(0, 0, 0))
+    return 'display %s' % name
 
 @app.route('/clear')
 def clear():
