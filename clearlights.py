@@ -42,6 +42,13 @@ def colorWipe(strip, color, wait_ms=50):
 		strip.show()
 
 
+def TwinkleTwinkle():
+    for i in range(strip.numPixels()):
+        color = (random(0,255),random(0,255),random(0,255))
+        strip.setPixelColor(random(NUM_LEDS),color);
+        strip.show();
+        delay(SpeedDelay);
+		
 def clearStrip():
 	# Process arguments
 	opt_parse()
@@ -81,7 +88,20 @@ def blueStrip():
 	strip.begin()
 	colorWipe(strip, Color(0, 0, 255)) # clear wipe
 	return 1
+void loop() {
+  TwinkleRandom(20, 100, false);
+}
 
+
+def allTwinkle():
+	
+void TwinkleRandom(int Count, int SpeedDelay, boolean OnlyOne) {
+  setAll(0,0,0);
+  
+
+  
+  delay(SpeedDelay);
+}
 
 @app.route('/pattern/<name>')
 def success(name):
