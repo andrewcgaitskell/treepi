@@ -6,6 +6,11 @@ import argparse
 import signal
 import sys
 
+from flask import Flask, redirect, url_for, request
+app = Flask(__name__)
+
+
+
 def signal_handler(signal, frame):
     colorWipe(strip, Color(0,0,0))
     sys.exit(0)
@@ -37,8 +42,7 @@ def colorWipe(strip, color, wait_ms=50):
 		strip.show()
 
 
-# Main program logic follows:
-if __name__ == '__main__':
+def clearStrip():
 	# Process arguments
 	opt_parse()
 	# Create NeoPixel object with appropriate configuration.
@@ -46,3 +50,19 @@ if __name__ == '__main__':
 	# Intialize the library (must be called once before other functions).
 	strip.begin()
 	colorWipe(strip, Color(0, 0, 0)) # clear wipe
+
+@app.route('/success/<name>')
+def success(name):
+   return 'welcome %s' % name
+
+@app.route('/login',methods = ['POST', 'GET'])
+def login():
+   if request.method == 'POST':
+      user = request.form['nm']
+      return redirect(url_for('success',name = user))
+   else:
+      user = request.args.get('nm')
+      return redirect(url_for('success',name = user))
+
+if __name__ == '__main__':
+   app.run(debug = True)
