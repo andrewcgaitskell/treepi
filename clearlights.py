@@ -5,6 +5,7 @@ from neopixel import *
 import argparse
 import signal
 import sys
+
 def signal_handler(signal, frame):
     colorWipe(strip, Color(0,0,0))
     sys.exit(0)
@@ -34,19 +35,14 @@ def colorWipe(strip, color, wait_ms=50):
 	for i in range(strip.numPixels()):
 		strip.setPixelColor(i, color)
 		strip.show()
-		time.sleep(wait_ms/1000.0)
 
 
 # Main program logic follows:
 if __name__ == '__main__':
 	# Process arguments
 	opt_parse()
-
 	# Create NeoPixel object with appropriate configuration.
 	strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
 	# Intialize the library (must be called once before other functions).
 	strip.begin()
-
-	print ('Press Ctrl-C to quit.')
-	while True:
-		colorWipe(strip, Color(0, 0, 0)) # clear wipe
+	colorWipe(strip, Color(0, 0, 0)) # clear wipe
