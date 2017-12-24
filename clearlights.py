@@ -60,7 +60,7 @@ def success(name):
 def clear():
    r = clearStrip()
    r = 0
-   return r
+   return "Strip Cleared"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
