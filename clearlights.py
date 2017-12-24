@@ -42,12 +42,12 @@ def colorWipe(strip, color, wait_ms=50):
 		strip.show()
 
 
-def TwinkleTwinkle():
+def TwinkleTwinkle(strip):
     for i in range(strip.numPixels()):
         color = (random(0,255),random(0,255),random(0,255))
-        strip.setPixelColor(random(NUM_LEDS),color);
-        strip.show();
-        delay(SpeedDelay);
+        strip.setPixelColor(random(NUM_LEDS),color)
+        strip.show()
+        time.sleep(wait_ms/1000.0)
 		
 def clearStrip():
 	# Process arguments
@@ -88,20 +88,16 @@ def blueStrip():
 	strip.begin()
 	colorWipe(strip, Color(0, 0, 255)) # clear wipe
 	return 1
-void loop() {
-  TwinkleRandom(20, 100, false);
-}
 
-
-def allTwinkle():
-	
-void TwinkleRandom(int Count, int SpeedDelay, boolean OnlyOne) {
-  setAll(0,0,0);
-  
-
-  
-  delay(SpeedDelay);
-}
+def twinkleStrip():
+	# Process arguments
+	opt_parse()
+	# Create NeoPixel object with appropriate configuration.
+	strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
+	# Intialize the library (must be called once before other functions).
+	strip.begin()
+	TwinkleTwinkle(strip) # twinkle
+	return 1
 
 @app.route('/pattern/<name>')
 def success(name):
@@ -111,6 +107,8 @@ def success(name):
 	r = greenStrip()
     elif name == 'blue':
 	r = blueStrip()
+    elif name == 'twinkle':
+	r = twinkleStrip()
     else :
 	r = clearStrip()
     return 'display %s' % name
