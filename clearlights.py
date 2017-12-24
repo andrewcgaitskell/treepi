@@ -56,14 +56,11 @@ def clearStrip():
 def success(name):
    return 'display %s' % name
 
-@app.route('/clear',methods = ['POST', 'GET'])
+@app.route('/clear')
 def clear():
-   if request.method == 'POST':
-      r = clearStrip()
-      return r
-   else:
-      r = 0
-      return r
+   r = clearStrip()
+   r = 0
+   return r
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
