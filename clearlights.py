@@ -86,7 +86,7 @@ def blueStrip():
 @app.route('/pattern/<name>')
 def success(name):
     if name == 'red':
-	r - redStrip()
+	r = redStrip()
     elif name == 'green':
 	r = greenStrip()
     elif name == 'blue':
