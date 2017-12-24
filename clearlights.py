@@ -50,19 +50,20 @@ def clearStrip():
 	# Intialize the library (must be called once before other functions).
 	strip.begin()
 	colorWipe(strip, Color(0, 0, 0)) # clear wipe
+	return 1
 
-@app.route('/success/<name>')
+@app.route('/pattern/<name>')
 def success(name):
-   return 'welcome %s' % name
+   return 'display %s' % name
 
-@app.route('/login',methods = ['POST', 'GET'])
-def login():
+@app.route('/clear',methods = ['POST', 'GET'])
+def clear():
    if request.method == 'POST':
-      user = request.form['nm']
-      return redirect(url_for('success',name = user))
+      r = clearStrip()
+      return r
    else:
-      user = request.args.get('nm')
-      return redirect(url_for('success',name = user))
+      r = 0
+      return r
 
 if __name__ == '__main__':
    app.run(debug = True)
