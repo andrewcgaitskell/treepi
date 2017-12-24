@@ -59,7 +59,7 @@ def redStrip():
 	strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
 	# Intialize the library (must be called once before other functions).
 	strip.begin()
-	colorWipe(strip, Color(255, 0, 0)) # clear wipe
+	colorWipe(strip, Color(0, 255, 0)) # clear wipe
 	return 1
 
 def greenStrip():
@@ -69,7 +69,7 @@ def greenStrip():
 	strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
 	# Intialize the library (must be called once before other functions).
 	strip.begin()
-	colorWipe(strip, Color(0, 255, 0)) # clear wipe
+	colorWipe(strip, Color(255, 0, 0)) # clear wipe
 	return 1
 
 def blueStrip():
