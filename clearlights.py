@@ -52,16 +52,47 @@ def clearStrip():
 	colorWipe(strip, Color(0, 0, 0)) # clear wipe
 	return 1
 
+def redStrip():
+	# Process arguments
+	opt_parse()
+	# Create NeoPixel object with appropriate configuration.
+	strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
+	# Intialize the library (must be called once before other functions).
+	strip.begin()
+	colorWipe(strip, Color(255, 0, 0)) # clear wipe
+	return 1
+
+def greenStrip():
+	# Process arguments
+	opt_parse()
+	# Create NeoPixel object with appropriate configuration.
+	strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
+	# Intialize the library (must be called once before other functions).
+	strip.begin()
+	colorWipe(strip, Color(0, 255, 0)) # clear wipe
+	return 1
+
+def blueStrip():
+	# Process arguments
+	opt_parse()
+	# Create NeoPixel object with appropriate configuration.
+	strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
+	# Intialize the library (must be called once before other functions).
+	strip.begin()
+	colorWipe(strip, Color(0, 0, 255)) # clear wipe
+	return 1
+
+
 @app.route('/pattern/<name>')
 def success(name):
     if name == 'red':
-	colorWipe(strip, Color(0, 0, 255))
+	r - redStrip()
     elif name == 'green':
-	colorWipe(strip, Color(0, 255, 0))
-    elif name == 'green':
-	colorWipe(strip, Color(255, 0, 0))
+	r = greenStrip()
+    elif name == 'blue':
+	r = blueStrip()
     else :
-	colorWipe(strip, Color(0, 0, 0))
+	r = clearStrip()
     return 'display %s' % name
 
 @app.route('/clear')
